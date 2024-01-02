@@ -129,7 +129,7 @@ impl Filter {
     }
 }
 
-const ICONS: Font = Font::with_name("Iced_Todos-Icons");
+const ICONS: Font = Font::with_name("Iced-Todos-Icons");
 
 fn icon(unicode: char) -> Text<'static> {
     text(unicode.to_string())
