@@ -8,9 +8,9 @@ use crate::tasks::{Filter, Task};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SavedState {
-    inpu_value: String,
-    filter: Filter,
-    tasks: Vec<Task>,
+    pub input_value: String,
+    pub filter: Filter,
+    pub tasks: Vec<Task>,
 }
 
 #[derive(Debug, Clone)]
@@ -39,7 +39,7 @@ impl SavedState {
         path
     }
 
-    async fn load() -> Result<Self, LoadError> {
+    pub async fn load() -> Result<Self, LoadError> {
         use async_std::prelude::*;
 
         let mut contents = String::new();
@@ -55,7 +55,7 @@ impl SavedState {
         from_str(&contents).map_err(|_| LoadError::Format)
     }
 
-    async fn save(self) -> Result<(), SaveError> {
+    pub async fn save(self) -> Result<(), SaveError> {
         use async_std::prelude::*;
 
         let json = to_string_pretty(&self).map_err(|_| SaveError::Format)?;

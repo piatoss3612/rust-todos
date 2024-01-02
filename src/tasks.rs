@@ -79,7 +79,7 @@ impl Task {
                     button(edit_icon())
                         .on_press(TaskMessage::Edit)
                         .padding(10)
-                        .style(theme::Button::Text)
+                        .style(theme::Button::Text),
                 ]
                 .spacing(20)
                 .align_items(Alignment::Center)
@@ -111,7 +111,7 @@ impl Task {
     }
 }
 
-#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize, Eq, PartialEq)]
 pub enum Filter {
     #[default]
     All,
@@ -120,7 +120,7 @@ pub enum Filter {
 }
 
 impl Filter {
-    pub fn matches(self, task: &Task) -> bool {
+    pub fn matches(&self, task: &Task) -> bool {
         match self {
             Filter::All => true,
             Filter::Active => !task.completed,
