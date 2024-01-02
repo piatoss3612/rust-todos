@@ -1,7 +1,7 @@
 use iced::{executor, widget::text_input, Application, Theme};
 use once_cell::sync::Lazy;
 
-use crate::{filter::Filter, tasks::Task};
+use crate::tasks::{Filter, Task};
 
 static INPUT_ID: Lazy<text_input::Id> = Lazy::new(text_input::Id::unique);
 

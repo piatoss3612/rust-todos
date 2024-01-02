@@ -1,7 +1,6 @@
 use iced::{window, Application, Settings};
 use todos::Todos;
 
-pub mod filter;
 pub mod persistence;
 pub mod tasks;
 pub mod todos;
