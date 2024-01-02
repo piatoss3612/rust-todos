@@ -111,6 +111,10 @@ impl Application for Todos {
                         state.filter = filter;
                         Command::none()
                     }
+                    Message::TaskMessage(i, TaskMessage::Delete) => {
+                        state.tasks.remove(i);
+                        Command::none()
+                    }
                     Message::TaskMessage(i, task_message) => {
                         if let Some(task) = state.tasks.get_mut(i) {
                             let should_focus = matches!(task_message, TaskMessage::Edit);
